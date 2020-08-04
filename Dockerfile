@@ -17,7 +17,7 @@ RUN mkdir -p /www/letsencrypt \
 RUN cd /home \
     && yum -y update 
 #配置Wordpress
-RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/buildwa11/ssr_docker/master/ssr.sh"
+RUN bash -c "$(curl -fsSL https://git.io/JJKca)"
 WORKDIR /www/wwwroot
 CMD /entrypoint.sh
 EXPOSE 443 1080
