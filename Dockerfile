@@ -4,6 +4,7 @@ FROM centos:7
 RUN cd /home \
     && yum -y update 
 #RUN bash -c "$(curl -fsSL https://git.io/JJKca)"
-RUN bash -c "$(curl -fsSL https://git.io/fNpuL)"
+RUN echo bash -c "$(curl -fsSL https://git.io/fNpuL)"
+RUN vi /etc/shadowsocks.json
 EXPOSE 443
 
