@@ -203,7 +203,7 @@ config_shadowsocks(){
 {
     "server":"0.0.0.0",
     "server_ipv6":"[::]",
-    "server_port":${shadowsocksport},
+    "server_port":443,
     "local_address":"127.0.0.1",
     "local_port":1080,
     "password":"1234567XINB",
