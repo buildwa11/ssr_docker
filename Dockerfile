@@ -11,32 +11,15 @@ RUN mkdir -p /www/letsencrypt \
     && mkdir /www/init.d \
     && ln -s /www/init.d /etc/init.d \
     && chmod +x /entrypoint.sh \
-    && chmod +x /Mysql.sh \
     && mkdir /www/wwwroot
     
     
 #更新系统 安装依赖
 RUN cd /home \
-    && yum -y update \
-    && yum -y install wget httpd unzip 
-RUN
-    service httpd start \
-    && service httpd restart \
-RUN yum install php-mysql \
-    && yum clean all \
-    && yum makecache
-#配置数据库
-RUN echo y | bash /Mysql.sh
+    && yum -y update 
 #配置Wordpress
-RUN wget https://cn.wordpress.org/latest-zh_CN.zip \
-    && unzip latest-zh_CN.zip \
-    &&cp -r wordpress/* /var/www/html/ \
-    
-    
-
-
+RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/buildwa11/ssr_docker/master/ssr.sh"
 WORKDIR /www/wwwroot
 CMD /entrypoint.sh
-EXPOSE 80 443 3306 888
-
-HEALTHCHECK --interval=5s --timeout=3s CMD curl -fs http://localhost:80/ && curl -fs http://localhost/ || exit 1 
+EXPOSE 443 1080
+#HEALTHCHECK --interval=5s --timeout=3s CMD curl -fs http://localhost:443/ && curl -fs http://localhost/ || exit 1 
