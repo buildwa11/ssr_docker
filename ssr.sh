@@ -110,7 +110,7 @@ rm -R SSR.Go
 git clone https://github.com/leitbogioro/SSR.Go
 
 #安装shadowsocksRR主程序
-bash <(curl -L -s https://git.io/fNpEa)
+bash <(curl -L -s https://raw.githubusercontent.com/buildwa11/ssr_docker/master/SSRinstall.sh)
 
 # 删除旧的维护策略并写入新的
 if [[ `grep -i "/etc/init.d/shadowsocks restart" /etc/crontab` ]]; then
